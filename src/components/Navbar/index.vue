@@ -18,7 +18,7 @@
           </router-link>
 
           <router-link
-            to="invoice"
+            to="invoices"
             class="q-ml-xl link flex items-center q-pa-sm-md q-pa-md-lg"
           >
             <q-icon name="description" size="sm" />
@@ -145,7 +145,8 @@ p {
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "EssentialLink",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Navbar",
   setup() {
     const rightDrawerOpen = ref(false);
 
