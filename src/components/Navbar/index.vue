@@ -142,7 +142,8 @@ p {
 }
 </style>
 <script>
-import { defineComponent, ref } from "vue";
+import { api } from "src/boot/axios";
+import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
