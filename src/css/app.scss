@@ -21,6 +21,12 @@ body {
   font-size: 1.4rem;
 }
 
+// space utility classes
+.px-xl {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
 @media only screen and (max-width: 768px) {
   // text utility classes
   .text-sm {
@@ -34,6 +40,12 @@ body {
   }
   .text-lg {
     font-size: 1.24rem;
+  }
+
+  // space utility classes
+  .px-xl {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -50,5 +62,12 @@ body {
   }
   .text-lg {
     font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .px-xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
