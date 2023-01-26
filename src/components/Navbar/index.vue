@@ -202,6 +202,13 @@ p {
     padding-right: 2rem;
   }
 }
+
+@media only screen and (max-width: 320px) {
+  .px-xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 </style>
 <script>
 import { defineComponent, onMounted, ref } from "vue";

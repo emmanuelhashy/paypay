@@ -143,14 +143,6 @@
 .mr-xl {
   margin-right: 3rem;
 }
-
-.breadcrumbs {
-  font-size: 1.5rem;
-}
-.px-xl {
-  padding-left: 6rem;
-  padding-right: 6rem;
-}
 .w-sm {
   width: 90px;
 }
@@ -210,13 +202,6 @@
   .mr-xl {
     margin-right: 0rem;
   }
-  .breadcrumbs {
-    font-size: 1.2rem;
-  }
-  .px-xl {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 
   .payment-info {
     width: 45%;
@@ -230,11 +215,15 @@
   .w-sm {
     width: 100%;
   }
-  .breadcrumbs {
-    font-size: 1rem;
-  }
   .w-md {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .px-xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 </style>
