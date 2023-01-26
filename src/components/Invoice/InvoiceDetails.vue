@@ -4,22 +4,31 @@
       <q-breadcrumbs-el class="text-indigo" label="Invoices" />
       <q-breadcrumbs-el class="text-gray" label="edit invoice (INV-2022-010)" />
     </q-breadcrumbs>
-    <q-card class="my-card border-round q-my-xl q-pa-lg">
+    <div
+      v-if="!invoice.invoice"
+      style="height: 80vh"
+      class="flex justify-center items-center"
+    >
+      <q-spinner color="primary" size="6em" :thickness="4" />
+    </div>
+    <q-card v-else class="my-card border-round q-my-xl q-pa-lg">
       <q-card-section>
         <div class="flex justify-between">
           <div class="flex items-center">
-            <img src="/logo.png" width="80px" height="80px" alt="Dipa logo" />
+            <img src="/logo.png" width="80" height="80" alt="Dipa logo" />
             <div class="q-ml-sm">
               <p class="text-h5 text-weight-bold">Dipa Inhouse</p>
               <p class="text-h6 text-weight-regular text-gray">
-                hello@dipainhousecom
+                hello@{{ invoice.invoice.company.handle }}
               </p>
             </div>
           </div>
           <div class="text-align text-h6 text-weight-regular text-gray">
-            <p>Ijen boulevard street 101</p>
-            <p>Malang city, 65115</p>
-            <p>East java indonesia</p>
+            <p>{{ invoice.invoice.address }}</p>
+            <p>
+              {{ invoice.invoice.city }} city, {{ invoice.invoice.postal_code }}
+            </p>
+            <p>{{ invoice.invoice.country }}</p>
           </div>
         </div>
         <div
@@ -27,15 +36,18 @@
         >
           <div class="text-h6 text-weight-regular text-white">
             <p class="text-weight-bold">Invoice Number</p>
-            <p>INV-2022-010</p>
-            <p>Issues Date: 11 Jan 2022</p>
-            <p>Due Date: 18 Jan 2022</p>
+            <p>{{ invoice.invoice.invoice_no }}</p>
+            <p>Issues Date: {{ invoice.invoice.billed_to.issued_date }}</p>
+            <p>Due Date: {{ invoice.invoice.billed_to.due_date }}</p>
           </div>
           <div class="text-align text-h6 text-weight-regular text-white">
             <p class="text-weight-bold">Billed to</p>
-            <p>Zakky Grizzly</p>
-            <p>Monlight Agency LTD</p>
-            <p>New York, USA</p>
+            <p>{{ invoice.invoice.billed_to.name }}</p>
+            <p>{{ invoice.invoice.billed_to.company }}</p>
+            <p>
+              {{ invoice.invoice.billed_to.city }},
+              {{ invoice.invoice.billed_to.country }}
+            </p>
           </div>
         </div>
         <div class="flex justify-between q-mt-xl">
@@ -45,125 +57,76 @@
           </div>
           <div>
             <q-btn
-              class="q-pa-xs border-round-sm"
-              text-color="purple"
+              class="q-pa-sm border-round-sm text-indigo"
               unelevated
               icon="tune"
               label="Customize"
             />
           </div>
         </div>
-        <div
-          class="row full-width text-capitalize text-h6 text-weight-regular q-pt-lg border-y"
-        >
-          <div class="col-12 col-md-5 q-mr-xl">
-            <p class="">Item name</p>
-          </div>
-          <div class="gt-sm q-mr-md col-md-1">
-            <p class="">Hours</p>
-          </div>
-          <div class="gt-sm q-mr-md col-md-1">
-            <p class="">Rate/hr</p>
-          </div>
-          <div class="gt-sm q-mr-md col-md-1">
-            <p class="">Tax</p>
-          </div>
-          <div class="gt-sm col-md-2">
-            <p class="w-md">Line Total</p>
-          </div>
-          <div class="gt-sm col-md-1"></div>
-        </div>
-        <div class="row text-h6 text-weight-bold full-width text-black q-mt-xl">
-          <div class="col-12 col-md-5 mr-xl">
-            <input
-              type="text"
-              name="title"
-              class="q-pa-md full-width border-round-sm q-mb-lg"
-            />
-            <input
-              type="text"
-              name="description"
-              placeholder="Description"
-              class="q-pa-md full-width border-round-sm"
-            />
-          </div>
-          <div class="col-sm-2 col-12 q-mr-md col-md-1">
-            <p class="lt-md q-mt-md">Hours</p>
-            <input type="text" class="w-sm q-pa-md border-round-sm" />
-          </div>
-          <div class="col-sm-2 col-12 q-mr-md col-md-1">
-            <p class="lt-md q-mt-md">Rate/hr</p>
-            <input type="text" class="w-sm q-pa-md border-round-sm" />
-          </div>
-          <div class="col-sm-2 col-12 q-mr-md col-md-1">
-            <p class="lt-md q-mt-md">Tax</p>
-            <input type="text" class="w-sm q-pa-md border-round-sm" />
-          </div>
-          <div class="col-sm-4 col-12 col-md-2">
-            <p class="lt-md q-mt-md">Line Total</p>
-            <input type="text" class="w-md q-pa-md border-round-sm" />
-          </div>
-          <div class="col-12 col-sm-1">
-            <p class="lt-md q-mt-md"></p>
-            <q-icon class="text-indigo" name="add_circle" size="xl" />
-          </div>
-        </div>
-        <div class="row border-t q-mt-xl q-py-lg">
+        <FormComponent />
+        <div class="row-md column border-t q-mt-xl q-py-lg">
           <div class="col-md-5 col-sm-12">
             <div class="flex justify-between">
               <p class="text-h5 text-weight-medium">Payment Method</p>
-              <p class="text-h6 text-weight-medium text-purple-11">
+              <p class="text-h6 text-weight-medium text-indigo">
                 Select Payment
               </p>
             </div>
             <div class="account-info">
               <div class="flex justify-between">
-                <p class="text-h6 text-weight-medium">Wire Transfer</p>
-                <img src="/wise.png" height="40px" width="60px" alt="" />
+                <p class="text-h6 text-weight-medium">
+                  {{ invoice.invoice.payment_method }} Transfer
+                </p>
+                <img src="/wise.png" height="40" width="60" alt="" />
               </div>
               <div>
                 <p>
                   <span class="text-gray text-h6 text-weight-regular"
                     >Account Name:
                   </span>
-                  <span class="text-h6 text-weight-medium"
-                    >Barly Vallendito</span
-                  >
+                  <span class="text-h6 text-weight-medium">{{
+                    invoice.invoice.account_name
+                  }}</span>
                 </p>
                 <p>
                   <span class="text-gray text-h6 text-weight-regular"
                     >Account Number:
                   </span>
-                  <span class="text-h6 text-weight-medium"
-                    >76746 467565 4674</span
-                  >
+                  <span class="text-h6 text-weight-medium">{{
+                    invoice.invoice.account_no
+                  }}</span>
                 </p>
                 <p>
                   <span class="text-gray text-h6 text-weight-regular"
-                    >Routing Name:
+                    >Routing Number:
                   </span>
-                  <span class="text-h6 text-weight-medium">467565</span>
+                  <span class="text-h6 text-weight-medium">{{
+                    invoice.invoice.routing_no
+                  }}</span>
                 </p>
               </div>
             </div>
           </div>
           <div class="col-md-2 gt-sm"></div>
-          <div class="col-md-5 col-sm-12">
+          <div class="col-md-5 col-sm-12 q-mt-sm-lg q-mt-md-xs">
             <div class="flex justify-between border-b q-pb-xl">
               <div>
                 <p class="text-h6 text-weight-medium">Sub total</p>
                 <p class="text-gray text-h6 text-weight-regular">Discount</p>
-                <p class="text-gray text-h6 text-weight-regular">Task</p>
+                <p class="text-gray text-h6 text-weight-regular">Total tax</p>
               </div>
               <div class="text-right text-h6 text-weight-medium">
-                <p>$4,800.00</p>
-                <p>$0.00</p>
-                <p>$0.00</p>
+                <p>${{ invoice.invoice.sub_total }}</p>
+                <p>${{ invoice.invoice.discount }}</p>
+                <p>${{ invoice.invoice.tax }}</p>
               </div>
             </div>
             <div class="flex justify-between q-mt-lg">
               <p class="text-gray text-h6 text-weight-regular">Total Amount</p>
-              <p class="text-right text-h6 text-weight-bold">$4,800.00</p>
+              <p class="text-right text-h6 text-weight-bold">
+                ${{ invoice.invoice.total_amount }}
+              </p>
             </div>
           </div>
         </div>
@@ -172,7 +135,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .mr-xl {
   margin-right: 3rem;
 }
@@ -191,15 +154,13 @@
 }
 .body {
   padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .q-h-0 {
   height: 0;
 }
 .text-indigo {
-  color: #4a15ea;
-}
-.text-gray {
-  color: gray;
+  color: $primary;
 }
 .border-round {
   border-radius: 20px;
@@ -233,9 +194,6 @@
   padding: 20px;
   width: 100%;
 }
-.total {
-  width: 35%;
-}
 .text-align {
   text-align: right;
 }
@@ -248,9 +206,7 @@
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  .total {
-    width: 45%;
-  }
+
   .payment-info {
     width: 45%;
   }
@@ -269,19 +225,24 @@
 }
 </style>
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, onBeforeMount, ref } from "vue";
+import { createNamespacedHelpers } from "vuex";
+import FormComponent from "../Form/index.vue";
+
+const { mapActions, mapGetters } = createNamespacedHelpers("invoice");
 
 export default defineComponent({
+  // eslint-disable-next-line vue/multi-word-component-names
   name: "InvoiceDetails",
-  setup() {
-    const rightDrawerOpen = ref(false);
-
-    return {
-      rightDrawerOpen,
-      toggleRightDrawer() {
-        rightDrawerOpen.value = !rightDrawerOpen.value;
-      },
-    };
+  components: { FormComponent },
+  computed: {
+    ...mapGetters(["invoice"]),
+  },
+  methods: {
+    ...mapActions(["getInvoiceById"]),
+  },
+  created() {
+    this.getInvoiceById();
   },
 });
 </script>

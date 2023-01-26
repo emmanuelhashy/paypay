@@ -14,9 +14,9 @@ export function makeServer({ environment = "development" } = {}) {
         return new Response(200, headers, data);
       });
 
-      this.get("/api/invoices:id", (schema, request) => {
+      this.get("/api/invoice", (schema, request) => {
         const headers = {};
-        let id = request.params.id;
+        let id = 1;
         const data = schema.invoices.find(id);
         return new Response(200, headers, data);
       });
@@ -34,14 +34,25 @@ export function makeServer({ environment = "development" } = {}) {
       this.delete("/api/invoices:id", (schema, request) => {
         const headers = {};
         let id = request.params.id;
-        schema.invoices.find(id).destroy();
+        let invoice = schema.invoices.find(id).destroy();
+        let data = {};
+
+        return new Response(200, headers, data);
+      });
+
+      this.delete("/api/invoices", (schema, request) => {
+        const headers = {};
+        schema.invoices.all().destroy();
+        let data = [];
 
         return new Response(200, headers, data);
       });
     },
     seeds(server) {
       server.create("invoice", {
-        username: "dipainhousecom",
+        company: {
+          handle: "dipainhousecom",
+        },
         title: "Payment for lunch",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
@@ -55,17 +66,17 @@ export function makeServer({ environment = "development" } = {}) {
           company: "Monlight Agency LTD",
           city: "New York",
           country: "USA",
-          due_date: "11 Jan 2022",
+          due_date: "18 Jan 2022",
           issued_date: "11 Jan 2022",
         },
         payment_method: "Wise",
-        routing_name: "467565",
+        routing_no: "467565",
         account_no: "76746 467565 4674",
         account_name: "Barly Vallendito",
         sub_total: "4,800.00",
         discount: "0.00",
         tax: "0.00",
-        total: "4,800.00",
+        total_amount: "4,800.00",
       });
       server.create("invoice", {
         username: "sunlink",

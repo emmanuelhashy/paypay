@@ -1,5 +1,5 @@
 <template>
-  <q-layout class="bg-aliceblue" view="lHh Lpr lFf">
+  <q-layout class="bg-gray-light" view="lHh Lpr lFf">
     <div class="main">
       <Navbar />
       <!-- <Mainsection/> -->
@@ -10,15 +10,15 @@
     </q-page-container>
   </q-layout>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 .main {
   width: 100%;
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
 }
-.bg-aliceblue {
-  background-color: aliceblue;
+.bg-gray-light {
+  background-color: $gray-light-1;
 }
 </style>
 
