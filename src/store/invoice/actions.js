@@ -3,7 +3,6 @@ import { invoiceConstants } from "./constants";
 
 export function getInvoices({ commit }) {
   api.get(`/invoices`).then((response) => {
-    console.log({ response });
     commit(invoiceConstants.UPDATE_INVOICES, response.data);
   });
 }

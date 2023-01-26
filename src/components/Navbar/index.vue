@@ -92,7 +92,7 @@
       class="bg-grey-3"
     >
       <q-scroll-area class="fit">
-        <div class="q-pa-md">
+        <div class="q-pa-md text-base">
           <router-link
             to="dashboard"
             flat
@@ -104,7 +104,7 @@
               class="q-mr-md-sm text-gray q-mr-lg-md"
               size="sm"
             />
-            <p class="text-h6 text-weight-regular">Dashboard</p>
+            <p class="text-weight-regular">Dashboard</p>
           </router-link>
 
           <router-link
@@ -116,7 +116,7 @@
               size="sm"
               class="q-mr-md-sm q-mr-lg-md text-gray"
             />
-            <p class="text-h6 text-weight-regular">Invoices</p>
+            <p class="text-weight-regular">Invoices</p>
           </router-link>
 
           <router-link
@@ -128,7 +128,7 @@
               size="sm"
               class="q-mr-md-sm q-mr-lg-md text-gray"
             />
-            <p class="text-h6 text-weight-regular">Wallet</p>
+            <p class="text-weight-regular">Wallet</p>
           </router-link>
 
           <router-link
@@ -140,7 +140,7 @@
               size="sm"
               class="q-mr-md-sm q-mr-lg-md text-gray"
             />
-            <p class="text-h6 text-weight-regular">Activity</p>
+            <p class="text-weight-regular">Activity</p>
           </router-link>
 
           <router-link
@@ -152,7 +152,7 @@
               size="sm"
               class="q-mr-md-sm q-mr-lg-md text-gray"
             />
-            <p class="text-h6 text-weight-regular">Help</p>
+            <p class="text-weight-regular">Help</p>
           </router-link>
         </div>
       </q-scroll-area>
