@@ -7,3 +7,48 @@ body {
   color: $gray-light;
 }
 
+// text utility classes
+.text-sm {
+  font-size: 14px;
+}
+.text-base {
+  font-size: 1.25rem;
+}
+.text-md {
+  font-size: 1.3rem;
+}
+.text-lg {
+  font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 768px) {
+  // text utility classes
+  .text-sm {
+    font-size: 14px;
+  }
+  .text-base {
+    font-size: 1.15rem;
+  }
+  .text-md {
+    font-size: 1.2rem;
+  }
+  .text-lg {
+    font-size: 1.24rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  // text utility classes
+  .text-sm {
+    font-size: 14px;
+  }
+  .text-base {
+    font-size: 0.95rem;
+  }
+  .text-md {
+    font-size: 0.97rem;
+  }
+  .text-lg {
+    font-size: 1rem;
+  }
+}

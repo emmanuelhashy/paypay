@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="row full-width text-capitalize text-h6 text-weight-regular q-pt-lg border-y"
+      class="row full-width text-capitalize text-base text-weight-regular q-pt-lg border-y"
     >
       <div class="col-12 col-md-5 q-mr-xl">
         <p class="text-gray">Item name</p>
@@ -20,7 +20,7 @@
       </div>
       <div class="gt-sm col-md-1"></div>
     </div>
-    <div class="row text-h6 text-weight-bold full-width text-black q-mt-xl">
+    <div class="row text-base text-weight-bold full-width text-black q-mt-xl">
       <div class="col-12 col-md-5 mr-xl">
         <input
           type="text"
@@ -46,7 +46,7 @@
       <div class="col-sm-2 col-12 q-mr-md col-md-1">
         <p class="lt-md q-mt-md">Rate/hr</p>
         <div class="w-sm q-input q-px-sm q-py-md border-round-sm flex">
-          <span class="text-h6 text-gray">$</span>
+          <span class="text-base text-gray">$</span>
           <input
             type="text"
             style="
@@ -62,7 +62,7 @@
       <div class="col-sm-2 col-12 q-mr-md col-md-1">
         <p class="lt-md q-mt-md">Tax</p>
         <div class="w-sm q-input q-px-sm q-py-md border-round-sm flex">
-          <span class="text-h6 text-gray">$</span>
+          <span class="text-base text-gray">$</span>
           <input
             type="text"
             style="
@@ -78,7 +78,7 @@
       <div class="col-sm-4 col-12 col-md-2">
         <p class="lt-md q-mt-md">Line Total</p>
         <div class="w-md q-input q-px-sm q-py-md border-round-sm flex">
-          <span class="text-h6 text-gray">$</span>
+          <span class="text-base text-gray">$</span>
           <input
             type="text"
             style="

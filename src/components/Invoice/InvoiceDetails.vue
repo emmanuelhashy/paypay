@@ -1,6 +1,6 @@
 <template>
   <div class="body px-xl">
-    <q-breadcrumbs class="text-h5 text-weight-regular">
+    <q-breadcrumbs class="text-lg text-weight-regular">
       <q-breadcrumbs-el class="text-indigo" label="Invoices" />
       <q-breadcrumbs-el class="text-gray" label="edit invoice (INV-2022-010)" />
     </q-breadcrumbs>
@@ -11,19 +11,19 @@
     >
       <q-spinner color="primary" size="6em" :thickness="4" />
     </div>
-    <q-card v-else class="my-card border-round q-my-xl q-pa-lg">
+    <q-card v-else class="my-card border-round q-my-xl q-pa-lg-lg q-pa-sm-lg">
       <q-card-section>
         <div class="flex justify-between">
           <div class="flex items-center">
             <img src="/logo.png" width="80" height="80" alt="Dipa logo" />
             <div class="q-ml-sm">
-              <p class="text-h5 text-weight-bold">Dipa Inhouse</p>
-              <p class="text-h6 text-weight-regular text-gray">
+              <p class="text-lg text-weight-bold">Dipa Inhouse</p>
+              <p class="text-base text-weight-regular text-gray">
                 hello@{{ invoice.invoice.company.handle }}
               </p>
             </div>
           </div>
-          <div class="text-align text-h6 text-weight-regular text-gray">
+          <div class="text-align text-base text-weight-regular text-gray">
             <p>{{ invoice.invoice.address }}</p>
             <p>
               {{ invoice.invoice.city }} city, {{ invoice.invoice.postal_code }}
@@ -34,13 +34,13 @@
         <div
           class="flex justify-between border-round q-mt-xl q-pa-lg bg-gradient"
         >
-          <div class="text-h6 text-weight-regular text-white">
+          <div class="text-base text-weight-regular text-white">
             <p class="text-weight-bold">Invoice Number</p>
             <p>{{ invoice.invoice.invoice_no }}</p>
             <p>Issues Date: {{ invoice.invoice.billed_to.issued_date }}</p>
             <p>Due Date: {{ invoice.invoice.billed_to.due_date }}</p>
           </div>
-          <div class="text-align text-h6 text-weight-regular text-white">
+          <div class="text-align text-base text-weight-regular text-white">
             <p class="text-weight-bold">Billed to</p>
             <p>{{ invoice.invoice.billed_to.name }}</p>
             <p>{{ invoice.invoice.billed_to.company }}</p>
@@ -52,12 +52,14 @@
         </div>
         <div class="flex justify-between q-mt-xl">
           <div>
-            <p class="text-h5 text-weight-medium">Item details</p>
-            <p class="text-h6 text-weight-regular">Type item for hours item</p>
+            <p class="text-md text-weight-bold">Item details</p>
+            <p class="text-base text-weight-regular">
+              Type item for hours item
+            </p>
           </div>
-          <div>
+          <div class="q-mb-md">
             <q-btn
-              class="q-pa-sm border-round-sm text-indigo"
+              class="q-pa-sm text-sm border-round-sm text-indigo"
               unelevated
               icon="tune"
               label="Customize"
@@ -68,40 +70,40 @@
         <div class="row-md column border-t q-mt-xl q-py-lg">
           <div class="col-md-5 col-sm-12">
             <div class="flex justify-between">
-              <p class="text-h5 text-weight-medium">Payment Method</p>
-              <p class="text-h6 text-weight-medium text-indigo">
+              <p class="text-lg text-weight-bold">Payment Method</p>
+              <p class="text-base text-weight-medium text-indigo">
                 Select Payment
               </p>
             </div>
             <div class="account-info">
               <div class="flex justify-between">
-                <p class="text-h6 text-weight-medium">
+                <p class="text-base text-weight-medium">
                   {{ invoice.invoice.payment_method }} Transfer
                 </p>
                 <img src="/wise.png" height="40" width="60" alt="" />
               </div>
               <div>
                 <p>
-                  <span class="text-gray text-h6 text-weight-regular"
+                  <span class="text-gray text-base text-weight-regular"
                     >Account Name:
                   </span>
-                  <span class="text-h6 text-weight-medium">{{
+                  <span class="text-base text-weight-medium">{{
                     invoice.invoice.account_name
                   }}</span>
                 </p>
                 <p>
-                  <span class="text-gray text-h6 text-weight-regular"
+                  <span class="text-gray text-base text-weight-regular"
                     >Account Number:
                   </span>
-                  <span class="text-h6 text-weight-medium">{{
+                  <span class="text-base text-weight-medium">{{
                     invoice.invoice.account_no
                   }}</span>
                 </p>
                 <p>
-                  <span class="text-gray text-h6 text-weight-regular"
+                  <span class="text-gray text-base text-weight-regular"
                     >Routing Number:
                   </span>
-                  <span class="text-h6 text-weight-medium">{{
+                  <span class="text-base text-weight-medium">{{
                     invoice.invoice.routing_no
                   }}</span>
                 </p>
@@ -112,19 +114,21 @@
           <div class="col-md-5 col-sm-12 q-mt-sm-lg q-mt-md-xs">
             <div class="flex justify-between border-b q-pb-xl">
               <div>
-                <p class="text-h6 text-weight-medium">Sub total</p>
-                <p class="text-gray text-h6 text-weight-regular">Discount</p>
-                <p class="text-gray text-h6 text-weight-regular">Total tax</p>
+                <p class="text-base text-weight-medium">Sub total</p>
+                <p class="text-gray text-base text-weight-regular">Discount</p>
+                <p class="text-gray text-base text-weight-regular">Total tax</p>
               </div>
-              <div class="text-right text-h6 text-weight-medium">
+              <div class="text-right text-base text-weight-medium">
                 <p>${{ invoice.invoice.sub_total }}</p>
                 <p>${{ invoice.invoice.discount }}</p>
                 <p>${{ invoice.invoice.tax }}</p>
               </div>
             </div>
             <div class="flex justify-between q-mt-lg">
-              <p class="text-gray text-h6 text-weight-regular">Total Amount</p>
-              <p class="text-right text-h6 text-weight-bold">
+              <p class="text-gray text-base text-weight-regular">
+                Total Amount
+              </p>
+              <p class="text-right text-base text-weight-bold">
                 ${{ invoice.invoice.total_amount }}
               </p>
             </div>
@@ -138,6 +142,10 @@
 <style lang="scss" scoped>
 .mr-xl {
   margin-right: 3rem;
+}
+
+.breadcrumbs {
+  font-size: 1.5rem;
 }
 .px-xl {
   padding-left: 6rem;
@@ -202,6 +210,9 @@
   .mr-xl {
     margin-right: 0rem;
   }
+  .breadcrumbs {
+    font-size: 1.2rem;
+  }
   .px-xl {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -218,6 +229,9 @@
 @media only screen and (max-width: 600px) {
   .w-sm {
     width: 100%;
+  }
+  .breadcrumbs {
+    font-size: 1rem;
   }
   .w-md {
     width: 100%;
