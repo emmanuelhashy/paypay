@@ -5,12 +5,24 @@ const routes = [
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
       {
-        path: "/invoices",
-        component: () => import("components/Invoice/InvoiceList.vue"),
+        path: "/invoice",
+        component: () => import("components/Invoice/InvoiceDetails.vue"),
       },
       {
-        path: "/invoices/:id",
-        component: () => import("components/Invoice/InvoiceDetails.vue"),
+        path: "/dashboard",
+        component: () => import("components/Dashboard/index.vue"),
+      },
+      {
+        path: "/wallet",
+        component: () => import("components/Wallet/index.vue"),
+      },
+      {
+        path: "/activity",
+        component: () => import("components/Activity/index.vue"),
+      },
+      {
+        path: "/help",
+        component: () => import("components/Help/index.vue"),
       },
     ],
   },

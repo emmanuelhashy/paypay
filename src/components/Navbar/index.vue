@@ -11,41 +11,61 @@
             to="dashboard"
             flat
             dense
-            class="q-ml-xl link flex items-center q-pa-sm-md q-pa-md-lg"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
           >
-            <q-icon name="dashboard" size="sm" />
+            <q-icon
+              name="dashboard"
+              class="q-mr-md-sm text-gray q-mr-lg-md"
+              size="sm"
+            />
             <p class="text-h6 text-weight-regular">Dashboard</p>
           </router-link>
 
           <router-link
-            to="invoices"
-            class="q-ml-xl link flex items-center q-pa-sm-md q-pa-md-lg"
+            to="invoice"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
           >
-            <q-icon name="description" size="sm" />
+            <q-icon
+              name="description"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Invoices</p>
           </router-link>
 
           <router-link
             to="wallet"
-            class="q-ml-xl link flex items-center q-pa-sm-md q-pa-md-lg"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
           >
-            <q-icon name="account_balance_wallet" size="sm" />
+            <q-icon
+              name="account_balance_wallet"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Wallet</p>
           </router-link>
 
           <router-link
             to="activity"
-            class="q-ml-xl link flex items-center q-pa-sm-md q-pa-md-lg"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
           >
-            <q-icon name="assessment" size="sm" />
+            <q-icon
+              name="assessment"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Activity</p>
           </router-link>
 
           <router-link
             to="help"
-            class="q-ml-xl link flex items-center q-pa-sm-md q-pa-md-lg"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
           >
-            <q-icon name="phone" size="sm" />
+            <q-icon
+              name="phone"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Help</p>
           </router-link>
         </div>
@@ -73,30 +93,67 @@
     >
       <q-scroll-area class="fit">
         <div class="q-pa-md">
-          <div flat dense class="link flex items-center q-mb-lg">
-            <q-icon name="dashboard" size="sm" />
+          <router-link
+            to="dashboard"
+            flat
+            dense
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
+          >
+            <q-icon
+              name="dashboard"
+              class="q-mr-md-sm text-gray q-mr-lg-md"
+              size="sm"
+            />
             <p class="text-h6 text-weight-regular">Dashboard</p>
-          </div>
+          </router-link>
 
-          <div class="link flex items-center q-mb-lg">
-            <q-icon name="description" size="sm" />
+          <router-link
+            to="invoice"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
+          >
+            <q-icon
+              name="description"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Invoices</p>
-          </div>
+          </router-link>
 
-          <div class="link flex items-center q-mb-lg">
-            <q-icon name="account_balance_wallet" size="sm" />
+          <router-link
+            to="wallet"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
+          >
+            <q-icon
+              name="account_balance_wallet"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Wallet</p>
-          </div>
+          </router-link>
 
-          <div class="link flex items-center q-mb-lg">
-            <q-icon name="assessment" size="sm" />
+          <router-link
+            to="activity"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
+          >
+            <q-icon
+              name="assessment"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Activity</p>
-          </div>
+          </router-link>
 
-          <div class="link flex items-center q-mb-lg">
-            <q-icon name="phone" size="sm" />
+          <router-link
+            to="help"
+            class="q-ml-md-lg q-ml-lg-xl link flex items-center q-py-lg"
+          >
+            <q-icon
+              name="phone"
+              size="sm"
+              class="q-mr-md-sm q-mr-lg-md text-gray"
+            />
             <p class="text-h6 text-weight-regular">Help</p>
-          </div>
+          </router-link>
         </div>
       </q-scroll-area>
     </q-drawer>
@@ -129,9 +186,14 @@ p {
   cursor: pointer;
   color: $dark;
 }
-.link:hover {
+.link:hover,
+.link.active {
   border-bottom: 2px solid $primary-1;
   color: $primary;
+
+  i {
+    color: $primary;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -142,20 +204,17 @@ p {
 }
 </style>
 <script>
-import { api } from "src/boot/axios";
 import { defineComponent, onMounted, ref } from "vue";
+import { createNamespacedHelpers } from "vuex";
+
+const { mapActions, mapGetters } = createNamespacedHelpers("invoice");
 
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Navbar",
-  setup() {
-    const rightDrawerOpen = ref(false);
-
+  data() {
     return {
-      rightDrawerOpen,
-      toggleRightDrawer() {
-        rightDrawerOpen.value = !rightDrawerOpen.value;
-      },
+      rightDrawerOpen: false,
     };
   },
 });
